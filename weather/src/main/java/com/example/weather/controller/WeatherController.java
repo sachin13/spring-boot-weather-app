@@ -49,28 +49,27 @@ public class WeatherController {
 	}
 	
 	
-	@Autowired
-	private HistoryRepository historyrepo;
-	@GetMapping("/history")
-	public String showHistory(Model model) {
-		
-		model.addAttribute("history",historyrepo.findAll());
-		return "history";
-	}
+	/*
+	 * @Autowired private HistoryRepository historyrepo;
+	 * 
+	 * @GetMapping("/history") public String showHistory(Model model) {
+	 * 
+	 * model.addAttribute("history",historyrepo.findAll()); return "history"; }
+	 */
 	
 	
-	@GetMapping("/history/delete/{id}")
-	public String deleteHistory(@PathVariable Long id,
-	                            @RequestParam(defaultValue = "0") int page,
-	                            @RequestParam(required = false) String filterCity) {
-		historyrepo.deleteById(id);
-	    return "redirect:/history?page=" + page + (filterCity != null ? "&city=" + filterCity : "");
-	}
-	
-	@GetMapping("/history/clear")
-	public String clearHistory() {  
-		historyrepo.deleteAll();
-		return "redirect:/history";
-	}
+	/*
+	 * @GetMapping("/history/delete/{id}") public String deleteHistory(@PathVariable
+	 * Long id,
+	 * 
+	 * @RequestParam(defaultValue = "0") int page,
+	 * 
+	 * @RequestParam(required = false) String filterCity) {
+	 * historyrepo.deleteById(id); return "redirect:/history?page=" + page +
+	 * (filterCity != null ? "&city=" + filterCity : ""); }
+	 * 
+	 * @GetMapping("/history/clear") public String clearHistory() {
+	 * historyrepo.deleteAll(); return "redirect:/history"; }
+	 */
 
 }

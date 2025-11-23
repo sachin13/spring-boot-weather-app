@@ -34,24 +34,25 @@ public class WeatherService {
 		
 		if(response!=null && response.getMain()!=null)
 		{
-			saveHistory(response);
+			//saveHistory(response);
 		}
 		
 		return response;
 	}
 	
-	private void saveHistory(WeatherResponse response) {
-		
-		WeatherHistory h=new WeatherHistory();
-		h.setCity(response.getName());
-		h.setTemperature(response.getMain().getHumidity());
-		h.setHumidity(response.getMain().getHumidity());
-		h.setDateTime(LocalDateTime.now());
-		
-		historyRepo.save(h);
-		
-		
-	}
+	/*
+	 * private void saveHistory(WeatherResponse response) {
+	 * 
+	 * WeatherHistory h=new WeatherHistory(); h.setCity(response.getName());
+	 * h.setTemperature(response.getMain().getHumidity());
+	 * h.setHumidity(response.getMain().getHumidity());
+	 * h.setDateTime(LocalDateTime.now());
+	 * 
+	 * historyRepo.save(h);
+	 * 
+	 * 
+	 * }
+	 */
 	
 
 }
