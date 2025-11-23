@@ -3,12 +3,12 @@ package com.example.weather.service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.weather.model.WeatherHistory;
+
 import com.example.weather.model.WeatherResponse;
-import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Value;
-import com.example.weather.repository.HistoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+
 @Service
 public class WeatherService {
 	
@@ -20,8 +20,8 @@ public class WeatherService {
 	private String apiUrl;
 
 	
-    @Autowired
-    private HistoryRepository historyRepo;
+
+
 	
 	private final RestTemplate restTemplate=new RestTemplate();
 	

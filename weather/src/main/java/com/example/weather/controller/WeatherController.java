@@ -1,12 +1,12 @@
 package com.example.weather.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import com.example.weather.model.WeatherResponse;
 import com.example.weather.service.WeatherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.example.weather.repository.HistoryRepository;
+
 @Controller
 public class WeatherController {
 	
