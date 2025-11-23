@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather Search History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">📜 Weather Search History</h2>
+
+    <table class="table table-bordered table-striped shadow">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>City</th>
+                <th>Temperature (°C)</th>
+                <th>Humidity (%)</th>
+                <th>Date & Time</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="h : ${history}">
+                <td th:text="${h.id}"></td>
+                <td th:text="${h.city}"></td>
+                <td th:text="${h.temperature}"></td>
+                <td th:text="${h.humidity}"></td>
+                <td th:text="${h.dateTime}"></td>
+                <td>
+<a th:href="@{'/history/delete/' + ${h.id}}"
+   class="btn btn-sm btn-danger">
+    Delete
+</a>
+
+</td>
+            </tr>
+        </tbody>
+    </table>
+<a href="/history/clear" class="btn btn-sm btn-outline-danger mb-3">
+    🧹 Clear All History
+</a>
+
+    <div class="text-center">
+        <a href="/" class="btn btn-primary">Search Again</a>
+    </div>
+
+</div>
+
+</body>
+</html>
