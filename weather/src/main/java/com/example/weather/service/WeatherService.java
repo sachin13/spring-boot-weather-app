@@ -12,11 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class WeatherService {
 	
-	@Value("${weather.api.key}")
+	@Value("${WEATHER_API_KEY}")
 	private String apikey;
+
 	
-	@Value("${weather.api.url}")
+	@Value("${WEATHER_API_URL}")
 	private String apiUrl;
+
 	
     @Autowired
     private HistoryRepository historyRepo;

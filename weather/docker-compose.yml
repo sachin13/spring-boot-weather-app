@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  mysql-db:
+    image: mysql:8
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: weatherdb
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  weather-app:
+    build: .
+    container_name: weather
+    restart: always
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    environment:
+      WEATHER_API_KEY: "a5b0588422164548cbc25fdbec538b73"
+      WEATHER_API_URL: "https://api.openweathermap.org/data/2.5/weather"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://mysql-db:3306/weatherdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "root"
+    ports:
+      - "9090:8080"
+
+volumes:
+  mysql_data:
