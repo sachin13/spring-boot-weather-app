@@ -9,13 +9,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 
-@Entity
-@Data
 public class WeatherHistory {
 	
 	
-	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
+
 	private Long id;
 	
 	public Long getId() {
