@@ -18,8 +18,7 @@ public class WeatherService {
 	@Value("${weather.api.url}")
 	private String apiUrl;
 	
-    @Autowired
-    private HistoryRepository historyRepo;
+ 
 	
 	private final RestTemplate restTemplate=new RestTemplate();
 	
@@ -32,24 +31,13 @@ public class WeatherService {
 		
 		if(response!=null && response.getMain()!=null)
 		{
-			saveHistory(response);
+			
 		}
 		
 		return response;
 	}
 	
-	private void saveHistory(WeatherResponse response) {
-		
-		WeatherHistory h=new WeatherHistory();
-		h.setCity(response.getName());
-		h.setTemperature(response.getMain().getHumidity());
-		h.setHumidity(response.getMain().getHumidity());
-		h.setDateTime(LocalDateTime.now());
-		
-		historyRepo.save(h);
-		
-		
-	}
+	
 	
 
 }
